@@ -1,0 +1,263 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; /* Azul bem claro */
+  color: #333;
+  line-height: 1.6;
+  background-image: url('atendimento-enfermagem.jpg'); /* Acrescentar imagem */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Fixo para criar um efeito agradável de rolagem */
+}
+
+/* Aplicando uma sobreposição suave no fundo */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7); /* Cor branca com leve transparência */
+  z-index: -1;
+}
+
+/* Header */
+header {
+  position: fixed; /* Fixando o topo da página */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 102, 204, 0.8); /* Azul claro */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #1e5d8b; /* Azul mais escuro */
+  z-index: 1000; /* Para garantir que o header fique por cima do conteúdo */
+}
+
+header .logo a {
+  display: block;
+  cursor: pointer;
+}
+
+header .logo img {
+  height: 50px;
+  transition: transform 0.3s ease; /* Para animação quando a logo for clicada */
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Seções */
+section {
+  padding: 2rem;
+  text-align: center;
+  margin-top: 80px; /* Para compensar o topo fixo */
+}
+
+/* Fixando o topo */
+header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 102, 204, 0.9);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sobre-nos p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Estilo do botão de logo (voltar ao topo) */
+header .logo a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+header .logo img:hover {
+  transform: scale(1.1); /* Aumenta um pouco a logo quando o usuário passa o mouse sobre ela */
+}
+
+/* Seção "Sobre Nós" */
+.sobre-nos p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Estilo geral da seção de cursos */
+.cursos {
+  text-align: center;
+  padding: 2rem;
+}
+
+.cursos h2 {
+  font-size: 2rem;
+  color: #003366; /* Azul escuro */
+  margin-bottom: 20px;
+}
+
+.curso-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.curso {
+  min-width: 33%; /* Exibe 3 cursos ao mesmo tempo */
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 1s ease-in-out;
+}
+
+.curso img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.curso h3 {
+  font-size: 1.2rem;
+  color: #0066cc;
+}
+
+.curso p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Seção de Imagens */
+.imagens .image-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.imagens img {
+  margin: 10px;
+  max-width: 300px;
+  border-radius: 10px;
+  border: 2px solid #cce7ff; /* Bordas azul claro */
+}
+
+/* Seção de Mapa */
+.mapa {
+  padding: 2rem;
+  text-align: center;
+}
+
+.mapa h2 {
+  font-size: 2rem;
+  color: #003366; /* Azul escuro */
+  margin-bottom: 20px;
+}
+
+.mapa-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Permite que os mapas se ajustem em telas menores */
+  margin-top: 20px;
+}
+
+.mapa-unidade {
+  width: 48%; /* Ajuste para ter duas colunas lado a lado */
+  min-width: 480px; /* Define a largura mínima das colunas */
+  background-color: #e6f7ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mapa-unidade h3 {
+  font-size: 1.5rem;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+.mapa-unidade iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.mapa-unidade p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Contato */
+.contato p {
+  font-size: 1.2rem;
+  color: #0066cc; /* Azul mais forte para as informações de contato */
+}
+
+/* Estilo do botão WhatsApp */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Ajustes de fontes para suavidade */
+h2 {
+  color: #003366; /* Azul escuro para títulos */
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Scroll suave para cursos */
+.cursos .curso-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
