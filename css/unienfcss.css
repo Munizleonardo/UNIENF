@@ -111,9 +111,68 @@ header .logo img:hover {
 }
 
 /* Seção "Sobre Nós" */
-.sobre-nos p {
-  max-width: 800px;
+.sobre-nos {
+  padding: 2rem;
+  text-align: center;
+}
+
+.sobre-nos h2 {
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
+
+/* Layout flexível com imagem à esquerda */
+.sobre-nos-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1000px;
   margin: 0 auto;
+  text-align: left;
+}
+
+/* Imagem com tamanho fixo */
+.sobre-nos-imagem {
+  flex: 0 0 300px;
+}
+
+.sobre-nos-imagem img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Texto em destaque */
+.sobre-nos-texto {
+  background-color: #ffffffc7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+/* Responsivo: imagem acima do texto */
+@media (max-width: 768px) {
+  .sobre-nos-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sobre-nos-imagem,
+  .sobre-nos-texto {
+    width: 100%;
+  }
+
+  .sobre-nos-imagem img {
+    max-width: 100%;
+  }
+
+  .sobre-nos-texto {
+    text-align: center;
+  }
 }
 
 /* Estilo geral da seção de cursos */
@@ -124,53 +183,89 @@ header .logo img:hover {
 
 .cursos h2 {
   font-size: 2rem;
-  color: #003366; /* Azul escuro */
+  color: #003366;
   margin-bottom: 20px;
 }
 
+/* Container para todos os cursos */
 .curso-container {
   display: flex;
-  overflow: hidden;
-  width: 100%;
-  position: relative;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
+/* Cada curso individual */
 .curso {
-  min-width: 33%; /* Exibe 3 cursos ao mesmo tempo */
-  padding: 20px;
-  box-sizing: border-box;
-  transition: transform 1s ease-in-out;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .curso img {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
 
 .curso h3 {
   font-size: 1.2rem;
   color: #0066cc;
+  margin: 10px 0;
 }
 
 .curso p {
   font-size: 1rem;
   color: #333;
+  padding: 0 10px 10px;
+}
+
+/* Botão final da seção de cursos */
+.botao-final {
+  margin-top: 30px;
+  text-align: center;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+}
+
+/* Centraliza o botão final */
+.cursos .botao-final {
+  display: inline-block;
 }
 
 .botao-disponibilidade {
   display: inline-block;
+  margin-bottom: 15px;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
-  text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .botao-disponibilidade:hover {
   background-color: #0056b3;
+  color: black;
+}
+
+/* Responsividade: layout em coluna para telas pequenas */
+@media (max-width: 768px) {
+  .curso-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .curso {
+    max-width: 90%;
+  }
 }
 
 /* Seção de Imagens */
@@ -272,9 +367,3 @@ p {
   color: #333;
 }
 
-/* Scroll suave para cursos */
-.cursos .curso-container {
-  display: flex;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-}
