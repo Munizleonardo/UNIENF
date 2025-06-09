@@ -1,71 +1,45 @@
-                  // Quando o usuário rolar para baixo
-                window.onscroll = function() {
-                  stickyHeader();
-                };
+             
+  var header = document.querySelector("header");
               
-                var header = document.querySelector("header");
-              
-                // Adiciona a classe 'sticky' quando o usuário rola para baixo
-                function stickyHeader() {
-                  if (window.pageYOffset > 0) {
-                    header.classList.add("sticky");
-                  } else {
-                    header.classList.remove("sticky");
-                  }
-                }
+// Adiciona a classe 'sticky' quando o usuário rola para baixo
+  function stickyHeader() {
+    if (window.pageYOffset > 0) {
+      header.classList.add("sticky");
+    } else {
+      header.classList.remove("sticky");
+    }
+  }
 
 
-                  const cursoContainer = document.querySelector('.curso-container');
-                  const cursos = document.querySelectorAll('.curso'); // cada curso individual
-                  let currentIndex = 0;
-                  let isPaused = false;
-                  let cursoInterval;
+// Seleciona o contêiner de cursos
+  const cursoContainer = document.querySelector('.curso-container');
+    
+// Função para mover os cursos para a esquerda
+  function moveCursos() {
+// Move a "cursos-container" para a esquerda, fazendo com que o primeiro curso desapareça
+  cursoContainer.style.transition = 'transform 1s ease-in-out'; // Define o tempo da transição
+  cursoContainer.style.transform = 'translateX(-33%)'; // Desloca para a esquerda em 33% da largura
+}
+  
+// Função para resetar a posição para o começo
+  function resetCursos() {
+// Reseta a posição de volta ao início
 
-                  function moveCursosPorGrupo() {
-                    if (isPaused) return;
+  setTimeout(() => {
+    cursoContainer.style.transition = 'none'; // Retira a transição temporariamente
+    cursoContainer.style.transform = 'translateX(0)';
+        
+// Após resetar, adiciona a transição novamente
+  setTimeout(() => {
+  cursoContainer.style.transition = 'transform 1s ease-in-out';
+  }, 50);
 
-                    const grupoTamanho = 3;
-                    const totalCursos = cursos.length;
-                    const containerWidth = cursoContainer.offsetWidth;
-                    const cursoWidth = cursos[0].offsetWidth;
-                    const marginRight = parseInt(getComputedStyle(cursos[0]).marginRight) || 0;
-
-                    // Calcula o quanto deve mover: 3 cursos + margem
-                    const passo = (cursoWidth + marginRight) * grupoTamanho;
-
-                    // Atualiza o índice e calcula nova posição
-                    currentIndex++;
-                    const deslocamento = passo * currentIndex;
-
-                    // Se passar do limite, reseta
-                    if (deslocamento >= (cursoWidth + marginRight) * totalCursos) {
-                      currentIndex = 0;
-                      cursoContainer.style.transition = 'none';
-                      cursoContainer.style.transform = 'translateX(0)';
-                      // Pequeno atraso antes da próxima transição
-                      setTimeout(() => {
-                        cursoContainer.style.transition = 'transform 1s ease';
-                      }, 50);
-                      return;
-                    }
-
-                    cursoContainer.style.transition = 'transform 1s ease';
-                    
-                  }
-
-                  function startLoop() {
-                    cursoInterval = setInterval(moveCursosPorGrupo, 5000); // troca a cada 5 segundos
-                  }
-
-                  function pauseAnimation() {
-                    isPaused = true;
-                    clearInterval(cursoInterval);
-                    cursoContainer.style.transition = 'none';
-                  }
-
-                  // Pausar se o usuário interagir
-                  cursoContainer.addEventListener('click', pauseAnimation);
-                  cursoContainer.addEventListener('wheel', pauseAnimation);
-
-                  // Iniciar
-                  startLoop();
+  }, 1000); // Espera o tempo da animação antes de resetar
+          
+}
+  
+// Configura o intervalo de movimento dos cursos
+  setInterval(() => {
+    moveCursos();
+    resetCursos();
+  }, 4000); // A cada 4 segundos a transição acontece
