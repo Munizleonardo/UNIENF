@@ -1,34 +1,4 @@
-
-// Função para rolar os cursos automaticamente
-function autoScrollCursos() {
-    const container = document.querySelector('.curso-container');
-    const cursos = document.querySelectorAll('.curso');
-    let index = 0;
-  
-    // Função para rolar a página para o próximo curso
-    setInterval(() => {
-      if (index < cursos.length - 3) {  // Exibe apenas 3 cursos por vez
-        container.scrollBy({
-          left: cursos[index].offsetWidth + 20,  // Desloca a largura de um curso + o espaçamento
-          behavior: 'smooth',
-        });
-       ;
-      } else {
-        // Reinicia a rolagem, voltando para o primeiro curso
-        container.scrollTo(0, 0);
-        index = 0;
-      }
-    }, 3500);  // A cada 3,5 segundos
-  }
-  
-// Chama a função ao carregar a página
-  window.onload = autoScrollCursos;
-
-// Quando o usuário rolar para baixo
-  window.onscroll = function() {
-    stickyHeader();
-  };
-              
+             
   var header = document.querySelector("header");
               
 // Adiciona a classe 'sticky' quando o usuário rola para baixo
